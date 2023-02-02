@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Moji projekti</title>
+        <link rel="stylesheet" href="css/mojiprojekti.css">
+    </head>
+    <body>
+        <div class="header" id="header">
+            <div>
+                <h1>MOJI PROJEKTI</h1>
+                <a href="https://arduino.cc"><img src="slike/arduinologo.png"></a>
+            </div>
+            <ul>
+                <a href="index.html"><li>Arduino</li></a>
+                <a href="naucisearduino.html"><li>Nauči se Arduino</li></a>
+                <a href="mojiprojekti.html"><li style="border:0px;border-bottom:2px;border-style:solid;border-color:#585d66">Moji projekti</li></a>
+            </ul> 
+        </div>
+
+        
+        <div id="Projekt">
+            <div>
+                <h3 id="Projektcounter">Števec z uporabo 4-ih 7-segmentnih displayov</h3>
+                <p>Ta projekt je namenjen za spoznanje z biti, branje bitov in pisanje bitov
+                    ter štetje z for loopi</p>
+            </div>
+            <iframe src="vezja/4-digit 7-segment counter.pdf"></iframe>
+            <img src="vezja/counter_arduino.png">
+
+            <p>7-segmentni displayi so skupaj povezani vzporedno torej pin A je povezan z drugi pini A in tako naprej. Pini A-G so povezani 
+                na Arduino ploščo
+                vsak na svoj pin. Vsak 7-segmentni display dobi svojo zemljo, ki je povezana na arduino ploščo.
+            </p>
+            <hr>
+            <hr>
+            <h3>Koda:</h3>
+            <object data="koda/4-digit 7-segment display counter.txt"></object>
+            <p id="koda">Koda deluje tako, najprej nastavimo vse pine za 7-segmentne displaye in Števila ki so pretvorjena v DEC tako, da ko jih
+                pretvorimo v BIN bodo enice in ničle tako postavljene da se bo 7-segmentni display prižgal v določeni številki. Nato v void setup() 
+                nastavimo vse pine ki 
+                jih potrebujemo v output z for loopom in ostale normalno z pinMode(pin, OUTPUT). V void loop() se izvaja pomembni del kode kjer so najprej 4-je 
+                for loopi ki štejejo za vsako številko, ki je nato zapisana v bajte spremenljivko z imenom enica do tisocice glede na for loop z vrednostjo DEC
+                ki je nato pretvorjena v BIN in dana vsem displayem. To se ponovi 25x, zato da je lepše za videti.
+            </p>
+        </div>
+
+        <div id="Projekt">
+            <div>
+                <h3 id="Projektsemafor">Semafor</h3>
+                <p>Ta projekt je namenjen spoznavanja z for loopi in kako delujejo
+                </p>
+            </div>
+            <iframe src="vezja/semafor .pdf"></iframe>
+            <img src="vezja/semafor_arduino.png">
+
+            <p>To je preprosti projekt semafor. Ima 3 LED diode povezane zaporedno z uporom, da ne pregorijo, in vsako LED diodo vezano na svoj pin.
+                Te tri LED diode so glavni semafor, potem sta pa še dve diodi, ki sta pa za semafor za pešče in gumb, ko želimo, da se semafor za pešče prižge.
+            </p>
+            
+            <hr>
+            <hr>
+            
+            <h3>Koda:</h3>
+            <object data="koda/semafor.txt"></object>
+            <p id="koda">Koda deluje tako, da za lažjo uporabo in razločnost kode najprej določimo pinom imena. V void setup()-u nato pine damo na 
+                izhod in vhod glede na njihovo rabo npr. pine za LED diode bomo dali na izhod in gumb na vhod. V void loop()-u so for 
+                loopi za semafor ceste, ki konstanto preverjajo, če se je gumb pritisnil. Če se je gumb pritisnil, se if stavek aktivira in spremenljivka
+                gumbstate se spremeni na 1. Ko je semafor na rdeči luči, if stavek preveri ali je gumbstate 1 ali 0. Če je gumbstate 1, se začne if stavek,
+                ki prižge semafor za pešče, in ponastavi gumbstate na 0. To se ponavlja v neskončnost, razen če zmanjka elektrike.
+            </p>
+        </div>
+
+        <div id="Projekt">
+            <div>
+                <h3 id="Projektrescounter">Kalkulator upornosti</h3>
+                <p>Ta projekt je bil ustvarjen za avtomatiziranje branja upornosti na uporih.
+                </p>
+            </div>
+            <img src="vezja/rescalshow.png" id="rescalshow">
+            <img src="vezja/rescalshowtwo.png" id="rescalshow">
+
+            <p>Slika prikazuje kako nam program napiše kakšno upornost ima upor. V prvo linijo mu napišemo barve iz upora v tem primer je rdeča rdeča rjava in zlata.
+                v naslednji vrstici vidimo katere barve smo vnesli in v naslendji vrstici dobimo rezultate. Rezultati so zapisani tako, da lahko vidimo upornost upora
+                ter toleranco (območje uporabnosti) upora. Ta verzija še ni imela končnic za boljšo preglednost
+            </p>
+            
+            <hr>
+            <hr>
+            
+            <h3>Koda:</h3>
+            <object data="koda/pyrescal.txt"></object>
+            <p id="koda">prve tri vrstice so python "slovarji" kjer je zapisana barvna koda in njena vrednost. Koda se začno tako, da nas program vpraša, katere
+                barve so na uporu. Nato program prešteje število barv, če so samo tri barve ima upor 1. in 2. vrednost kot številko, ki se jo množi z 3. ki je 
+                multiplikator (faktor s katerim množimo)npr. 1. vrednost je 2 in 2. vrednost je 5 
+                torej je vrednost 25 multiplikator je 10^2, 25 * 100 = 2500 ohmov in ker so samo tri barve je toleranca 20%. Za štiri barve je zraven še toleranca,
+                pri petih barvah pa so tri vrednosti, multiplikator in toleranca. Ko program vse izračuna v terminal napiše upornost in toleranco v omih.  
+            </p>
+        </div>
+
+        <div id="Projekt">
+            <div>
+                <h3 id="ProjektCMDrescal">Kalkulator upornosti 1.2</h3>
+                <p>To je novejša in boljša verzija Kalkulatorja upornosti.
+                </p>
+            </div>
+            <img src="vezja/CMDrescalshow.png" id="CMDrescalshow">
+            <img src="vezja/CMDrescalshowtwo.png" id="CMDrescalshow">
+
+            <p>Pri novejši verziji, napišeš barvne kode že v komando, in dobiš takoj nazaj upornost in toleranco.
+            </p>
+            
+            <hr>
+            <hr>
+            
+            <h3>Koda:</h3>
+            <object data="koda/pyrescalCMD.txt"></object>
+            <p id="koda">Pri tej kodi uporabljamo knjižnjico sys oz. knjižnjica system, ki nam omogoča, da beremo kaj vse je bilo v komando vpisano 
+                (tako je tukaj uporabljeno) in veliko več. Koda je enaka (nisem dober v optimizaciji kode), samo uporaba je malce lažja ter hitrejša. Ko program prebere 
+                komando, ki jo je dobil (komanda je : python pyrescal.py barva1 barva2 barva3 oz komanda, ki je začela program),
+                jo spremeni v list kjer jo pretvori v lažji način za branje tako, da doda še končnice kot so k ali M ali G, za lažje branje upornosti in tolerance.
+            </p>
+        </div>
+
+
+        
+        <div class="footer">
+            <div class="topfooter">
+                <a href="http://arduino.cc"><img src="slike/arduinologo.png"></a>
+            </div>
+            <div class="footernavrh">
+                <a href="#header"><h1>Nazaj na vrh</h1></a>
+            </div>
+           
+            <div class="footerinfo">
+
+            </div>
+            <hr>
+
+            
+            <h3>Kontakti:</h3>
+            <ul>
+                <li>luka@index.html</li>
+                <li>tel: 073 456 420</li>
+            </ul>
+            <hr>
+            <ul class="copyrights">
+                <ul class="b">logo © 2022 Arduino; site © 2022 LukaS; code © 2022 LukaS</ul>
+                <ul class="p">Kontakti so nedelujoči, in naj nebi bili uporabljeni, kot kontakt.</ul>
+            </ul>
+            <hr style="width: 0px;">
+        </div>
+
+    </body>
+</html>

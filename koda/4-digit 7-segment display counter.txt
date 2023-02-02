@@ -1,0 +1,67 @@
+int ledpins[] = {2, 3, 4, 5, 6, 7, 8, 9};//pins go from A-G no DP
+int ledcodes[] = {64, 121, 36, 48, 25, 18, 2, 120, 0, 16};
+
+void setup() {
+  
+  for (int i = 0; i < 8; i ++) {//for loop za vse pin na OUTPUT
+    pinMode(ledpins[i] , OUTPUT);
+  }
+  pinMode(10, OUTPUT);//tisocica
+  pinMode(11, OUTPUT);//stotica
+  pinMode(12, OUTPUT);//desetica
+  pinMode(13, OUTPUT);//enica
+}
+
+void loop() {
+
+  for(int a = 0; a < 10; a++) {
+    for(int b = 0; b < 10; b++) { 
+      for(int c = 0; c < 10; c++) {
+        for(int d = 0; d < 10; d++) {
+          byte tisocice = ledcodes[a];
+          byte stotice = ledcodes[b];
+          byte desetice = ledcodes[c];
+          byte enice = ledcodes[d];
+ 
+          int c = 0;
+          while(c < 25) {
+              
+            c++;
+            delay(1);
+            digitalWrite(10, LOW);
+            digitalWrite(12, LOW);
+            digitalWrite(13, HIGH);
+        
+           for(int i = 0; i < 8; i++){ 
+            digitalWrite(ledpins[i], bitRead(enice, i));          
+         
+           } 
+           delay(1);
+            digitalWrite(13, LOW);
+            digitalWrite(12, HIGH);
+        
+           for(int i = 0; i < 8; i++){  
+             digitalWrite(ledpins[i], bitRead(desetice, i));
+
+           }                 
+           delay(1);
+            digitalWrite(12, LOW);       
+            digitalWrite(11, HIGH);
+
+           for(int i = 0; i < 8; i++) {
+             digitalWrite(ledpins[i], bitRead(stotice, i));
+           }
+           delay(1);
+            digitalWrite(11, LOW);
+            digitalWrite(10, HIGH);
+    
+           for(int i = 0; i < 8; i++) {
+            digitalWrite(ledpins[i], bitRead(tisocice, i));
+        
+           }      
+        }
+    }      
+   }
+  } 
+ }
+}

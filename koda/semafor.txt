@@ -1,0 +1,65 @@
+int Rdeca = 2;
+int Rumena = 3;
+int Zelena = 4;
+int gumb = 7;
+int rdeca = 8;
+int zlena = 9;
+
+int gumbstate = 0;
+
+void setup() {//void setup ni pomemben
+  
+ pinMode(Rdeca, OUTPUT);
+ pinMode(Rumena, OUTPUT);
+ pinMode(Zelena, OUTPUT);
+ 
+ pinMode(gumb, INPUT);
+
+ pinMode(11, OUTPUT);
+ 
+ pinMode(rdeca, OUTPUT);
+ pinMode(zlena, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(rdeca, 1);
+ digitalWrite(Rumena, 0);
+ for (int i = 0; i < 4000; i++){//naredi luc aktivno in hkrati preverja za gumb
+  digitalWrite(Rdeca, 1);
+   if ((digitalRead(gumb) == HIGH) and (gumbstate == 0)){
+     gumbstate = 1;digitalWrite(11, 1);
+ }delay(1);}
+ 
+  digitalWrite(Rdeca, 0);
+ for (int i = 0; i < 1000; i++){//naredi luc aktivno in hkrati preverja za gumb
+  digitalWrite(Rumena, 1);
+   if ((digitalRead(gumb) == HIGH) and (gumbstate == 0)){
+     gumbstate = 1;digitalWrite(11, 1);
+ }delay(1);}
+
+  digitalWrite(Rumena, 0);
+ for (int i = 0; i < 3000; i++){//naredi luc aktivno in hkrati preverja za gumb
+  digitalWrite(Zelena, 1);
+   if ((digitalRead(gumb) == HIGH) and (gumbstate == 0)){
+     gumbstate = 1;digitalWrite(11, 1);
+ }delay(1);}
+
+  digitalWrite(Zelena, 0);
+ for (int i = 0; i < 3000; i++){//naredi luc aktivno in hkrati preverja za gumb
+  digitalWrite(Rumena, 1);
+   if ((digitalRead(gumb) == HIGH) and (gumbstate == 0)){
+     gumbstate = 1;digitalWrite(11, 1);
+ }delay(1);}
+
+ if (gumbstate == 1){//luci za pesce ce je bil gumb pritisnjen
+  digitalWrite(Rdeca, 1);
+  digitalWrite(Rumena, 0);
+  gumbstate = 0;
+  digitalWrite(11, 0);
+  delay(2000);
+  digitalWrite(zlena, 1);
+  digitalWrite(rdeca, 0);
+  delay(2000);
+  digitalWrite(zlena, 0); 
+ }
+}

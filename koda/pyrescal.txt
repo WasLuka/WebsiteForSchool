@@ -1,0 +1,38 @@
+
+numColors = {"black": "0", "brown": "1", "red": "2", "orange": "3", "yellow": "4", "green": "5", "blue": "6", "purple": "7", "grey": "8", "white": "9"}
+mulColors = {"black": 1, "brown": 10, "red": 10 ** 2, "orange": 10 ** 3, "yellow": 10 ** 4, "green": 10 ** 5, "blue": 10 ** 6, "purple": 10 ** 7,}
+tolColors = {"brown": 0.01, "red": 0.02, "green": 0.005, "blue": 0.0025, "purple": 0.001, "grey": 0.0005, "gold": 0.05, "silver": 0.1, " ": 0.2}
+
+resistance = ""
+resist = ""
+resmul = ""
+tolmul = ""
+
+colours = input(" resistor colors: ")
+colors = list(colours.split(" "))
+print(colors)
+count = len(colors)
+print(count)
+
+if count == 5:                          
+    res = colors[0:3]
+    index = 3
+elif count == 4:
+    res = colors[0:2]
+    index = 2
+elif count == 3:
+    colors.append(" ")
+    res = colors[0:2]
+    index = 2
+else:
+    print("Something went wrong please try again")
+
+for i in res:                                  
+    resist = resist + numColors[i]
+resist = int(resist)
+
+resistance = resist * mulColors[colors[index]]
+
+tolerance = resistance * tolColors[colors[-1]]
+
+print(f"resistance value is:{resistance}Ω and tolerance is {tolerance}Ω")

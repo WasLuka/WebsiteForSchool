@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nauči se Arduino</title>
+        <link rel="stylesheet" href="css/naucisearduino.css">
+    </head>
+    <body>
+
+        <div class="header" id="header">
+            <div>
+                <h1>NAUČI SE ARDUINO</h1>
+                <a href="https://arduino.cc"><img src="slike/arduinologo.png"></a>
+            </div>
+            <ul>
+                <a href="index.html"><li>Arduino</li></a>
+                <a href="naucisearduino.html"><li style="border:0px;border-bottom:2px;border-style:solid;border-color:#585d66">Nauči se Arduino</li></a>
+                <a href="mojiprojekti.html"><li>Moji projekti</li></a>
+            </ul> 
+        </div>
+
+        <div style="flex: 1">
+           
+            <div class="dokumentacija" style="display:flex;">
+                <div style="flex: 1;-ms-flex: 1;">
+                <h2>Poglej si Arduino dokumentacijo:</h2>
+                <p>Izvej vse o Arduino ploščah in njihovi zgradbi!</p>
+                <a href="docs.arduino.cc">ARDUINO DOKUMENTACIJA</a>
+                </div>
+                <div style="flex: 1;-ms-flex: 1;"> 
+                    <img src="slike/naucisearduinodocs.jpeg" width="43%" style="margin-left: 300px;">
+                </div>
+            </div>
+            <div class="uvod">
+                <h2>Nauči se osnove programiranja Arduina!</h2>
+            </div>
+            <div class="koda">
+                <h3>Prva koda</h3>
+                <p>S to kodo se boš spoznal, kako se piše kodo za Arduino ploščo. Seveda je to vse na osnovnem nivoju.</p>
+                <h3>Prvi korak</h3>
+                <p>Najprej si moraš naložiti Arduino IDE. Naložiš si ga lahko preko microsoft trgovine ali pa da klikneš na spodnjo povezavo.</p>
+                <a href="https://arduino.cc/en/software">Naloži si arduino IDE</a>
+            </div>
+
+            <div class="program">
+                <h3>Pisanje programa:</h3>
+                <p>Napisali bomo program, kjer bo utripala LED lučka, ki je vgrajena v Arduino ploščo.</p>
+                <p>Začnemo tako, da odpremo arduino IDE. Ko odpremo arduino IDE vidimo tole:</p>
+                <img src="slike/arduinoide.png" width="60%">
+                <p>Kot vidiš imaš nekaj napisano. void setup in void loop. void setup je del kode, ki se izvede samo enkrat, void loop pa se izvaja v neskončno.
+                   Za našo kodo potrebujemo programu povedati naj prižge LED lučko, zato bomo prižigali in ugašali pine.
+                </p>
+                <p>funkcije ki jih bomo potrebovali za našo kodo so:</p>
+                <ul>
+                    <li>Spremenljivke (uporabili bomo int)</li>
+                    <li>Čas (uporabili bomo delay)</li>
+                    <li>Manipulacija pinov (uporabili bomo digitalWrite)</li>
+                </ul>
+                <p>Preden začnemo pisati našo kodo, moramo vedeti, kaj te funkcije počnejo.</p>
+                <ul styyle="list-style-type:none">
+                    <li>int ime = vrednost  najprej je vrsta spremenljivke v vtem premeru je integer ali cela števila.</li>
+                    <li>pinMode(ime pina/pin, INPUT/OUTPUT) potem potrebujemo pinmode torej ali je pin izhod ali vhod.</li>
+                    <li>digitalWrite(ime pina/pin, HIGH/LOW) naredimo pin da je prižgan ali ugasnjen deluje kot 'stikalo' ki prižge in ugasne elektriko.</li>
+                    <li>delay(milisekunde) ustavi čas oz. 'ustavi' program za določen čas. </li>
+                </ul>
+                <h3>Napisana koda:</h3>
+                <object data="koda/ledutripanje.txt" width="70%" height="300px"></object>
+                <h3>Razlaga kode:</h3>
+                <p>Najprej nastavimo spremenljivko izven void setup in void loopa, ker če bi ga dali v void setup, bi bila spremenljivka samo za ta loop,
+                    zato jo damo izven loopa, da postane 'globalna' spremenljivka. Vgrajena LED lučka, ki je na Arduinu unu je na pinu 13, za ostale verzije je lahko
+                    na drugih pinih, zato si poglej na katerem pinu je LED lučka. v void setupu imamo pinmode, ki naredi pin 13 izhod torej, da 'oddaja' elektriko
+                    in ne sprejema. LED v pinmodu je enako kot če bi napisali samo 13, ampak je zaradi lepše berljivosti shranjena kot LED. Nato sledi void loop. 
+                    V void loopu se dogaja da se LED lučka prižge, in čez dve sekundi ugasne in tako naprej. Kaj se dogaja je, da Arduino prižge LED lučko zaradi
+                    digitalWrite(LED, HIGH), zato LED lučka sveti potem gre program na delay(1000), ki mu pove naj 'zaspi' sa 1 sekundo ali 1000 milisekund.
+                    Potem zaradi digitalWrite(LED, LOW) se LED lučka ugasne, in program počaka 1 sekundo in začne od začetka.
+                </p>
+                <h4>Kako naložiti ta program na moj Arduino?</h4>
+                <p>Najprej moraš izbrati katerega Arduinota imaš, to izbereš 'Orodja > Plošča > Arduino ki ga imaš', in izbereš vrata v 'Orodja > vrata > 
+                    Izbereš označen vhod', zato da 
+                    Arduino IDE ve, kam oz. na katerega Arduinota mora naložiti ta program.
+                </p>
+                <p>Nato naložiš program na Arduino, s klikom na gumb s puščico v desno oz. drugi gumb.</p>
+                <img src="slike/nalozikodo.png">
+                <p>Ko je program naložen, bi morala LED luč na Arduinu utripati.</p>
+                <h5>Zdaj ko razumeš osnove, poskusi spremeniti delay() ali dodaj še več prižiganj ali ugašanj LED luči, saj je poskušanje najboljši 
+                    način, da si to zapomniš, in razumeš bolje kaj se dogaja v programu.
+                </h5>
+                <h4>Hočeš vedeti še več?</h4>
+                <p>Če hočeš še bolje znati Arduino, si poglej Arduino project hub, kjer lahko vidiš veliko dobrih projektov in kako jih narediti, ali 
+                    se pa naučiš Arduino programiranje, in narediš svoje odlične projekte.
+                </p>
+                <p>Za konec, si poglej kako se uporablja LED lučko z Arduino, in poveži dve LED lučki na Arduina, in napiši kodo ter ekperimentiraj.</p>
+            </div>
+
+            
+        </div>
+        <div class="footer">
+            <div class="topfooter">
+                <a href="http://arduino.cc"><img src="slike/arduinologo.png"></a>
+            </div>
+            <div class="footernavrh">
+                <a href="#header"><h1>Nazaj na vrh</h1></a>
+            </div>
+           
+            <div class="footerinfo">
+
+            </div>
+            <hr>
+
+            
+            <h3>Kontakti:</h3>
+            <ul>
+                <li>luka@index.html</li>
+                <li>tel: 073 456 420</li>
+            </ul>
+            <hr>
+            <ul class="copyrights">
+                <ul class="b">logo © 2022 Arduino; site © 2022 LukaS</ul>
+                <ul class="p">Kontakti so nedelujoči, in naj nebi bili uporabljeni, kot kontakt.</ul>
+            </ul>
+            <hr style="width: 0px;">
+        </div>
+
+    </body>
+</html>
